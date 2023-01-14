@@ -12,6 +12,21 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ScreenshotUtil {
+    private final static Path screenshotsPath = Path.of("target", "screenshots");
+
+    static {
+        createDirectories();
+    }
+
+    public static void createDirectories() {
+        try {
+            Files.createDirectories(screenshotsPath);
+        } catch (IOException e) {
+            LogManager.getLogger().error("Failed to create screenshots path");
+            throw new RuntimeException(e);
+        }
+    }
+
     private static String getFormattedTimestamp() {
         return LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern(

@@ -1,6 +1,7 @@
 package me.iskak.calculator.test;
 
 import me.iskak.calculator.driver.Driver;
+import me.iskak.calculator.util.ScreenshotUtil;
 import me.iskak.calculator.util.TestListener;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 public abstract class CommonConditions {
     @BeforeAll
     public static void init() {
+        ScreenshotUtil.createDirectories();
         var driver = Driver.getDriver();
         driver.get("https://cloud.google.com/");
     }
